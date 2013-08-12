@@ -15,5 +15,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fnakstad/webaudio-guitar-tuner/issues"
+  },
+  "dependencies": {
+    "express": "~3.3.x"
   }
 }
