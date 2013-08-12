@@ -1,0 +1,19 @@
+{
+  "name": "webaudio-guitar-tuner",
+  "version": "0.0.0",
+  "description": "A pure HTML5/JS guitar tuner",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fnakstad/webaudio-guitar-tuner.git"
+  },
+  "author": "Frederik Nakstad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fnakstad/webaudio-guitar-tuner/issues"
+  }
+}
