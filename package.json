@@ -21,6 +21,7 @@
     "jade": "~0.35.x"
   },
   "devDependencies": {
-    "grunt": "~0.4.x"
+    "grunt": "~0.4.x",
+    "grunt-contrib-less": "~0.7.x"
   }
 }
