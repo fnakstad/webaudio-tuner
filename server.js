@@ -4,11 +4,17 @@ var express =       require('express')
 
 var app = express();
 
+app.set('views', __dirname + '/client/views');
+app.set('view engine', 'jade');
 app.use(express.logger('dev'))
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.static(path.join(__dirname, 'client/views/')));
+app.use(express.static(path.join(__dirname, 'client')));
+
+app.get('/', function(req, res) {
+    res.render('index');
+});
 
 app.set('port', process.env.PORT || 8000);
 http.createServer(app).listen(app.get('port'), function(){
