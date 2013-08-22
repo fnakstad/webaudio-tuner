@@ -11,18 +11,21 @@ html(lang='en')
         link(rel='stylesheet', href='/css/app.css')
 
     body
-        header
-    h1 tuner.coltrane.io
+        .container
+            header
+                h1 tuner.coltrane.io
+            hr
 
-    // Instrument + Tuning selection
-    section
-        select
-            option Instrument
-            option blah
-        select
-            option Tuning
+            // Instrument + Tuning selection
+            section
+                select.form-control
+                    option Instrument
+                    option blah
+                br
+                select.form-control
+                    option Tuning
 
-    // Tuning display
-    section
-    footer
-        p.pull-left Created by Frederik Nakstad. Code available on GitHub.
+            // Tuning display
+            section
+            footer
+                p.pull-left Created by Frederik Nakstad. Code available on GitHub.
