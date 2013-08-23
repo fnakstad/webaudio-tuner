@@ -13,19 +13,20 @@ html(lang='en')
     body
         .container
             header
-                h1 tuner.coltrane.io
+                h1
+                    img(id='logo', src='gfx/tuning_fork.png')
+                    | tuner.coltrane.io
             hr
 
             // Instrument + Tuning selection
             section
                 select.form-control
-                    option Instrument
                     option 6-String guitar
                     option Ukulele
                     option Banjo
 
                 select.form-control
-                    option Tuning
+                    option Standard tuning
 
             // Tuning display
             section
