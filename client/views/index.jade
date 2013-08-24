@@ -1,17 +1,18 @@
 !!! 5
-html(lang='en')
+html(lang='en', ng-app='tuner')
     head
         meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-        title tuner.coltrane.io - web audio instrument tuner
+        title tuner.coltrane.io - web audio tuner
 
         // External Stylesheets
         link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/components/font-awesome/css/font-awesome.min.css')
 
         // Custom Stylesheets
         link(rel='stylesheet', href='/css/app.css')
 
-    body
-        .container
+    body(data-ng-cloak)
+        .container(data-ng-controller='TunerCtrl')
             header
                 h1
                     img(id='logo', src='gfx/tuning_fork.png')
@@ -20,19 +21,27 @@ html(lang='en')
 
             // Instrument + Tuning selection
             section
-                select.form-control
-                    option 6-String guitar
-                    option Ukulele
-                    option Banjo
-
-                select.form-control
-                    option Standard tuning
+                select.form-control(data-ng-model='selectedInstrument', data-ng-options='i as i.instrument for i in instruments')
+                select.form-control(data-ng-model='selectedTuning', data-ng-options='t as t.title for t in tunings')
 
             // Tuning display
             section
+                table#pitches.table
+                    tr(data-ng-repeat="pitch in selectedTuning.pitches")
+                        td
+                            strong {{ pitch }}
+                        td
+                            hr
+                        td
+                            i.icon-play-circle
+            hr
             footer
                 p.pull-left Created by Frederik Nakstad. Code available on GitHub.
 
         // External JS
         script(type='text/javascript', src='/js/AudioContextMonkeyPatch.js')
-        script(type='text/javascript')
+        script(type='text/javascript', src='/components/angular/angular.min.js')
+
+        // Custom JS
+        script(type='text/javascript', src='/js/app.js')
+        script(type='text/javascript', src='/js/controllers.js')

@@ -1,3 +1,7 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none;
+}
+
 * {
   font-family: 'Open Sans', sans-serif;
 }
@@ -16,17 +20,58 @@ body {
     text-shadow: 4px 4px 0px rgba(0,0,0,0.6);
   }
 
-  select {
+  select.form-control {
     margin-top: 4px;
     margin-bottom: 4px;
+    font-size: 20px;
+    height: 42px;
+    font-weight: bold;
   }
 
   footer {
-    font-size: 0.8em;
+    font-size: 0.7rem;
   }
 }
 
 #logo {
   height: 40px;
   margin-right: 10px;
+
+  -webkit-filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.6));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+  filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+}
+
+#pitches {
+  td {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  td:nth-child(1) {
+    width: 40px;
+  }
+
+  td:nth-child(2) {
+    text-align: center;
+  }
+
+  td:nth-child(3) {
+    text-align: right;
+    font-size: 2rem;
+    width: 45px;
+
+    i {
+      text-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+      color: rgba(255,255,255,0.7);
+    }
+
+    i:hover {
+      color: rgba(255,255,255,1);
+    }
+  }
 }
