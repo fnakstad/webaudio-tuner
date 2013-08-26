@@ -12,9 +12,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('/', function(req, res) {
-    res.render('index');
-});
+require('./server/routes.js')(app);
 
 app.set('port', process.env.PORT || 8000);
 http.createServer(app).listen(app.get('port'), function(){
