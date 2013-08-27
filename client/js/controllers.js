@@ -1,4 +1,4 @@
-angular.module('tuner').controller('TunerCtrl', function($scope) {
+angular.module('tuner').controller('TunerCtrl', function($scope, PitchConverter) {
     $scope.instruments = instruments;
     $scope.selectedInstrument = $scope.instruments[0];
 
