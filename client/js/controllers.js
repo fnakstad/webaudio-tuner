@@ -1,4 +1,4 @@
-angular.module('tuner').controller('TunerCtrl', function($scope, PitchConverter) {
+angular.module('tuner').controller('TunerCtrl', function($scope, PitchConverter, SinOscillator) {
     $scope.instruments = instruments;
     $scope.selectedInstrument = $scope.instruments[0];
 
@@ -6,6 +6,11 @@ angular.module('tuner').controller('TunerCtrl', function($scope, PitchConverter)
         $scope.tunings = $scope.selectedInstrument.tunings;
         $scope.selectedTuning = $scope.tunings[0];
     });
+
+    $scope.play = function(pitch) {
+        var frequency = PitchConverter.pitchToFrequency(pitch);
+        SinOscillator.play(frequency);
+    };
 });
 
 var instruments = [
