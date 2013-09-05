@@ -99,7 +99,7 @@ angular.module('tuner').service('SinOscillator', function() {
     return {
         play: function(frequency) {
             vco.frequency.value = frequency;
-            vca.gain.value = 1;
+            vca.gain.value = 2;
         },
         stop: function() {
             vca.gain.value = 0;
