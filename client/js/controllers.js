@@ -1,6 +1,7 @@
 angular.module('tuner').controller('TunerCtrl', function($scope, PitchConverter, SinOscillator) {
     $scope.instruments = instruments;
     $scope.selectedInstrument = $scope.instruments[0];
+    $scope.freqData = SinOscillator.freqData;
 
     $scope.$watch('selectedInstrument', function() {
         $scope.tunings = $scope.selectedInstrument.tunings;
@@ -10,6 +11,10 @@ angular.module('tuner').controller('TunerCtrl', function($scope, PitchConverter,
     $scope.play = function(pitch) {
         var frequency = PitchConverter.pitchToFrequency(pitch);
         SinOscillator.play(frequency);
+    };
+
+    $scope.micCheck = function() {
+        SinOscillator.record();
     };
 });
 

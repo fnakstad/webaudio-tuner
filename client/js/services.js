@@ -86,7 +86,9 @@ angular.module('tuner').service('SinOscillator', function() {
 
     var context = new AudioContext,
         vco =     context.createOscillator(),
-        vca =     context.createGain();
+        vca =     context.createGain(),
+        analyser = context.createAnalyser(),
+        freqData = new Uint8Array(analyser.frequencyBinCount);
 
     vco.type = vco.SINE;
     vco.frequency.value = 440;
@@ -96,6 +98,8 @@ angular.module('tuner').service('SinOscillator', function() {
     vco.connect(vca);
     vca.connect(context.destination);
 
+    analyser.fftSize = 64;
+
     return {
         play: function(frequency) {
             vco.frequency.value = frequency;
@@ -103,6 +107,23 @@ angular.module('tuner').service('SinOscillator', function() {
         },
         stop: function() {
             vca.gain.value = 0;
-        }
+        },
+        record: record,
+        freqData: freqData
+    };
+
+    function record() {
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+        navigator.getUserMedia({ audio: true }, function(stream) {
+            var mic = context.createMediaStreamSource(stream);
+            mic.connect(analyser);
+            update();
+        });
+    };
+
+    function update() {
+        requestAnimationFrame(update);
+        analyser.getByteFrequencyData(freqData);
+        console.log(freqData); // TODO: Remove this
     };
 });
